@@ -1,5 +1,6 @@
-#grid-container {
-    border: solid 3px black;
+.grid-unit {
+    border-right: solid 1px black;
+    border-bottom: solid 1px black;
 }
 
 body {

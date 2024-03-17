@@ -7,7 +7,6 @@ function createGrid () {
     const gridSizePixel = gridSize.toString() + "px";
     gridContainer.style["width"] = gridSizePixel;
     gridContainer.style["height"] = gridSizePixel;
-    //gridContainer.style["box-sizing"] = "border-box";
     gridContainer.style["border"] = "solid 3px black"
 
 
@@ -19,10 +18,11 @@ function createGrid () {
     for(let count = 0; count < gridDensity; count++) {
         const gridUnit = document.createElement("div");
         gridUnit.style["box-sizing"] = "border-box";
-        gridUnit.style["border-right"] = "solid 1px black";
-        gridUnit.style["border-bottom"] = "solid 1px black";
+        gridUnit.classList.add("grid-unit");
         gridUnit.style["width"] = unitSizePixel;
         gridUnit.style["height"] = unitSizePixel;
+        //gridUnit.textContent = count;
+        
         rowContainer.appendChild(gridUnit);
     }
 
@@ -30,10 +30,29 @@ function createGrid () {
     for(let count = 0; count < gridDensity; count++) {
         const rowClone = rowContainer.cloneNode(true);
         gridContainer.appendChild(rowClone);
-        console.log(count);
     }
-    
 
+    gridContainer.addEventListener("mouseover", (event) => {
+        if (event.target.className === "grid-unit") {
+            console.log("hello");
+            event.target.style["background-color"] = "black";
+        }
+    });
 }
+
+function modifyGridUnit(gridUnit) {
+    gridUnit.style["background-color"] = "black";
+    console.log("hello");
+}
+/*
+function createGridUnitStyle() {
+    const gridUnitStyle = document.createElement("style");
+    gridUnitStyle.textContent = ".grid-unit {border-right: solid 1px black;}";
+    //gridUnit.style["border-right"] = "solid 1px black";
+    //gridUnit.style["border-bottom"] = "solid 1px black";
+
+    return gridUnitStyle;
+}
+*/
 
 createGrid();
