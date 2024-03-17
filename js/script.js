@@ -20,7 +20,7 @@ function createGrid (gridDensity) {
         gridUnit.style["width"] = unitSizePixel;
         gridUnit.style["height"] = unitSizePixel;
         //gridUnit.textContent = count;
-        
+        //gridUnit.style["font-size"] = "5px";
         rowContainer.appendChild(gridUnit);
     }
 
@@ -48,10 +48,21 @@ function getGridDensityUser() {
             && +densityInput.value < 101) {
             gridDensityUser = densityInput.value;
             densityInput.value = "";
+            removeGrid();
+            createGrid(gridDensityUser);
+
         }
     })
 }
 
+function removeGrid() {
+    const gridContainer = document.querySelector("#grid-container");
+    gridContainer.textContent = "";
+}
 
-createGrid(16);
-getGridDensityUser();
+function startApp() {
+    createGrid(16);
+    getGridDensityUser();
+}
+
+startApp();
