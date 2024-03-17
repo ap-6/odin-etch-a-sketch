@@ -3,7 +3,7 @@ function createGrid () {
     const gridContainer = document.querySelector("#grid-container");
     rowContainer.setAttribute("style", "display: flex");
     
-    const gridSize = 500;
+    const gridSize = 300;
     const gridSizePixel = gridSize.toString() + "px";
     gridContainer.style["width"] = gridSizePixel;
     gridContainer.style["height"] = gridSizePixel;
@@ -34,25 +34,28 @@ function createGrid () {
 
     gridContainer.addEventListener("mouseover", (event) => {
         if (event.target.className === "grid-unit") {
-            console.log("hello");
             event.target.style["background-color"] = "black";
         }
     });
 }
 
-function modifyGridUnit(gridUnit) {
-    gridUnit.style["background-color"] = "black";
-    console.log("hello");
-}
-/*
-function createGridUnitStyle() {
-    const gridUnitStyle = document.createElement("style");
-    gridUnitStyle.textContent = ".grid-unit {border-right: solid 1px black;}";
-    //gridUnit.style["border-right"] = "solid 1px black";
-    //gridUnit.style["border-bottom"] = "solid 1px black";
+function getGridDensityUser() {
+    const densityBtn = document.querySelector("#density-btn");
+    const densityInput = document.querySelector("#density-input");
+    let gridDensityUser = 16;
 
-    return gridUnitStyle;
+    densityBtn.addEventListener("click", () => {
+        if (Number.isInteger(+densityInput.value) 
+            && +densityInput.value > 0 
+            && +densityInput.value < 101) {
+            gridDensityUser = densityInput.value;
+            densityInput.value = "";
+            
+            
+        }
+    })
 }
-*/
+
 
 createGrid();
+getGridDensityUser();
