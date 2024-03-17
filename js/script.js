@@ -1,4 +1,4 @@
-function createGrid () {
+function createGrid (gridDensity) {
     const rowContainer = document.createElement("div");
     const gridContainer = document.querySelector("#grid-container");
     rowContainer.setAttribute("style", "display: flex");
@@ -9,8 +9,6 @@ function createGrid () {
     gridContainer.style["height"] = gridSizePixel;
     gridContainer.style["border"] = "solid 3px black"
 
-
-    let gridDensity = 16;
     const unitSize = gridSize / gridDensity;
     const unitSizePixel = unitSize.toString() + "px";
 
@@ -50,12 +48,10 @@ function getGridDensityUser() {
             && +densityInput.value < 101) {
             gridDensityUser = densityInput.value;
             densityInput.value = "";
-            
-            
         }
     })
 }
 
 
-createGrid();
+createGrid(16);
 getGridDensityUser();
