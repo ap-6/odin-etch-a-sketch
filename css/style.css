@@ -6,6 +6,7 @@
 
 .grid-container {
     border: solid 3px black;
+    margin-bottom: 4vh;
 }
 
 body {

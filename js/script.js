@@ -28,7 +28,7 @@ function createGrid (gridDensity) {
     }
 }
 
-function getGridDensityUser() {
+function changeGridDensityUser() {
     const densityBtn = document.querySelector("#density-btn");
     const densityInput = document.querySelector("#density-input");
     let gridDensityUser = 16;
@@ -72,10 +72,19 @@ function drawOnGrid() {
     });
 }
 
+function addResetButton(gridDensity) {
+    let resetBtn = document.querySelector("#reset-btn");
+
+    resetBtn.addEventListener("click", () => {
+            removeGrid();
+            createGrid(gridDensity);
+    });
+}
+
 function startApp() {
     createGrid(16);
     drawOnGrid();
-    getGridDensityUser();
+    changeGridDensityUser();
 }
 
 startApp();
